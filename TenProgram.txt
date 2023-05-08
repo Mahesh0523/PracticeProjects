@@ -1,0 +1,35 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RegexVerifier {
+    public static void main(String[] args) {
+        // Create a regular expression pattern to be tested
+        String regex = "[A-Za-z]+";
+
+        // Create input strings for testing
+        String input1 = "Hello";
+        String input2 = "123";
+        String input3 = "World";
+
+        // Verify pattern matching for input1
+        System.out.println("Input 1: " + input1);
+        boolean match1 = verifyPattern(regex, input1);
+        System.out.println("Pattern match: " + match1);
+
+        // Verify pattern matching for input2
+        System.out.println("Input 2: " + input2);
+        boolean match2 = verifyPattern(regex, input2);
+        System.out.println("Pattern match: " + match2);
+
+        // Verify pattern matching for input3
+        System.out.println("Input 3: " + input3);
+        boolean match3 = verifyPattern(regex, input3);
+        System.out.println("Pattern match: " + match3);
+    }
+
+    private static boolean verifyPattern(String regex, String input) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
+    }
+}
