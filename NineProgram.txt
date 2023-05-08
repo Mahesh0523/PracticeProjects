@@ -1,0 +1,30 @@
+import java.util.Arrays;
+
+public class ArrayVerifier {
+    public static void main(String[] args) {
+        // Create an array implementation to be tested
+        int[] array = {5, 3, 1, 4, 2};
+
+        // Verify the initial order of the array
+        System.out.println("Initial array: " + Arrays.toString(array));
+        assert !isSorted(array) : "Array is already sorted";
+
+        // Sort the array
+        Arrays.sort(array);
+
+        // Verify the sorted order of the array
+        System.out.println("Sorted array: " + Arrays.toString(array));
+        assert isSorted(array) : "Array is not sorted correctly";
+
+        System.out.println("Array verification completed successfully!");
+    }
+
+    private static boolean isSorted(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < array[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
