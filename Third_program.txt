@@ -1,0 +1,33 @@
+public class MethodExample {
+    public static void main(String[] args) {
+        // Example 1: Calling a method with no parameters
+        displayMessage();
+
+        // Example 2: Calling a method with parameters
+        int product = multiply(5, 3);
+        System.out.println("The product is: " + product);
+
+        // Example 3: Calling method with variable arguments
+        int sum = calculateSum(2, 4, 8, 9);
+        System.out.println("The sum is: " + sum);
+    }
+
+    // Method with no parameters
+    public static void displayMessage() {
+        System.out.println("Hello, World!");
+    }
+
+    //Method with parameters
+    public static int multiply(int a, int b) {
+        return a * b;
+    }
+
+    // Method with variable arguments
+    public static int calculateSum(int... numbers) {
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return sum;
+    }
+}
