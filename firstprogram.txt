@@ -1,0 +1,16 @@
+public class TypeCastingExample {
+    public static void main(String[] args) {
+        int myInt = 10;
+        double myDouble = myInt; // Implicit casting from int to double
+        System.out.println("Implicit casting: ");
+        System.out.println("myInt: " + myInt);
+        System.out.println("myDouble: " + myDouble);
+        
+        // Explicit
+        double myNewDouble = 10.5;
+        int myNewInt = (int) myNewDouble; 
+        System.out.println("\nExplicit casting: ");
+        System.out.println("myNewDouble: " + myNewDouble);
+        System.out.println("myNewInt: " + myNewInt);
+    }
+}
