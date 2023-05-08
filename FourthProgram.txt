@@ -1,0 +1,39 @@
+class Vehicle {
+    private String brand;
+
+    // Parameterized constructor
+    public Vehicle(String brand) {
+        this.brand = brand;
+    }
+
+    // Getter
+    public String getBrand() {
+        return brand;
+    }
+}
+
+class Car extends Vehicle {
+    private int year;
+
+    // Parameterized constructor
+    public Car(String brand, int year) {
+        super(brand); // Call to superclass constructor
+        this.year = year;
+    }
+
+    // Getter
+    public int getYear() {
+        return year;
+    }
+}
+
+public class ConstructorInheritanceDemo {
+    public static void main(String[] args) {
+        // Creating an instance of the Car class
+        Car car = new Car("Toyota", 2022);
+
+        // Accessing properties using getters
+        System.out.println("Brand: " + car.getBrand());
+        System.out.println("Year: " + car.getYear());
+    }
+}
