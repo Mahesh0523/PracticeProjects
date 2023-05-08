@@ -1,0 +1,38 @@
+public class AccessModifiersExample {
+    public static void main(String[] args) {
+        MainClass obj = new MainClass();
+
+        System.out.println("Public variable: " + obj.publicVariable);
+        myObject.publicMethod();
+        System.out.println("Protected variable: " + myObject.protectedVariable);
+        myObject.protectedMethod();
+        System.out.println("Default variable: " + myObject.defaultVariable);
+        myObject.defaultMethod();
+        System.out.println("Private variable: " + myObject.privateVariable);
+        myObject.privateMethod();    
+    }
+}
+
+class MainClass {
+    public int publicVariable = 10;
+    protected int protectedVariable = 20;
+    int defaultVariable = 30;
+    private int privateVariable = 40;
+
+    public void publicMethod() {
+        System.out.println("Public method");
+    }
+
+    protected void protectedMethod() {
+        System.out.println("Protected method");
+    }
+
+    void defaultMethod() {
+        System.out.println("Default method");
+    }
+
+    private void privateMethod() {
+        System.out.println("Private method");
+    }
+}
+
