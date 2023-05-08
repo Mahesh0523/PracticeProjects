@@ -1,0 +1,22 @@
+public class OuterClass {
+    private int outerData = 10;
+
+    public void outerMethod() {
+        System.out.println("Outer method called");
+    }
+
+    public class InnerClass {
+        public void innerMethod() {
+            System.out.println("Inner method called");
+            System.out.println("Accessing outer data: " + outerData);
+            outerMethod();
+        }
+    }
+
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+        OuterClass.InnerClass inner = outer.new InnerClass();
+
+        inner.innerMethod();
+    }
+}
