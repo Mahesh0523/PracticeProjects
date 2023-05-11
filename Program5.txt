@@ -1,0 +1,31 @@
+class CustomException extends Exception {
+    public CustomException(String message) {
+        super(message);
+    }
+}
+
+public class ExceptionHandlingDemo {
+    public static void main(String[] args) {
+        try {
+            processInput("Hello");
+            processInput("World");
+        } catch (CustomException e) {
+            System.out.println("CustomException caught: " + e.getMessage());
+        } finally {
+            System.out.println("Finally block executed.");
+        }
+
+        System.out.println("Program execution continues...");
+    }
+
+    public static void processInput(String input) throws CustomException {
+        try {
+            if (input.length() > 5) {
+                throw new CustomException("Invalid input: Input length is too long");
+            }
+            System.out.println("Processing input: " + input);
+        } catch (CustomException e) {
+            throw e;
+        }
+    }
+}
