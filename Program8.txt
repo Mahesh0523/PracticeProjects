@@ -1,0 +1,77 @@
+// Class definition for a Vehicle
+class Vehicle {
+    private String brand;
+    private String color;
+
+    public Vehicle(String brand, String color) {
+        this.brand = brand;
+        this.color = color;
+    }
+
+    public void accelerate() {
+        System.out.println("The vehicle is accelerating.");
+    }
+
+    public void brake() {
+        System.out.println("The vehicle is braking.");
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getColor() {
+        return color;
+    }
+}
+
+// Class definition for a Car, which is a subclass of Vehicle
+class Car extends Vehicle {
+    private int numberOfDoors;
+
+    public Car(String brand, String color, int numberOfDoors) {
+        super(brand, color);
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    public void honk() {
+        System.out.println("The car is honking.");
+    }
+
+    public int getNumberOfDoors() {
+        return numberOfDoors;
+    }
+}
+
+// Main class
+public class ObjectOrientedDemo {
+    public static void main(String[] args) {
+        // Creating objects of the Vehicle class
+        Vehicle vehicle1 = new Vehicle("Toyota", "Red");
+        Vehicle vehicle2 = new Vehicle("Honda", "Blue");
+
+        // Accessing properties and methods of the Vehicle class
+        System.out.println("Vehicle 1: " + vehicle1.getBrand() + ", " + vehicle1.getColor());
+        vehicle1.accelerate();
+        vehicle1.brake();
+
+        System.out.println("Vehicle 2: " + vehicle2.getBrand() + ", " + vehicle2.getColor());
+        vehicle2.accelerate();
+        vehicle2.brake();
+
+        // Creating objects of the Car class
+        Car car1 = new Car("BMW", "Black", 4);
+        Car car2 = new Car("Ford", "White", 2);
+
+        // Accessing properties and methods of the Car class
+        System.out.println("Car 1: " + car1.getBrand() + ", " + car1.getColor() + ", " + car1.getNumberOfDoors());
+        car1.accelerate();
+        car1.brake();
+        car1.honk();
+
+        System.out.println("Car 2: " + car2.getBrand() + ", " + car2.getColor() + ", " + car2.getNumberOfDoors());
+        car2.accelerate();
+        car2.brake();
+        car2.honk();
+    }
+}
