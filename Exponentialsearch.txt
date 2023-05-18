@@ -1,0 +1,68 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ExponentialSearch {
+    public static int exponentialSearch(int[] array, int target) {
+        if (array[0] == target) {
+            return 0; 
+        }
+
+        int size = array.length;
+        int bound = 1;
+
+        while (bound < size && array[bound] <= target) {
+            bound *= 2;
+        }
+
+        int left = bound / 2;
+        int right = Math.min(bound, size - 1);
+
+        return binarySearch(array, target, left, right);
+    }
+
+    public static int binarySearch(int[] array, int target, int left, int right) {
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (array[mid] == target) {
+                return mid; // Target found, return the index
+            } else if (array[mid] < target) {
+                left = mid + 1; 
+            } else {
+                right = mid - 1; 
+            }
+        }
+
+        return -1; 
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+
+        int[] array = new int[size];
+
+        System.out.println("Enter the array elements in sorted order:");
+        for (int i = 0; i < size; i++) {
+            System.out.print("Enter element at index " + i + ": ");
+            array[i] = scanner.nextInt();
+        }
+
+        Arrays.sort(array);
+
+        System.out.print("Enter the target value: ");
+        int target = scanner.nextInt();
+
+        int index = exponentialSearch(array, target);
+
+        if (index != -1) {
+            System.out.println("Target found at index: " + index);
+        } else {
+            System.out.println("Target not found in the array.");
+        }
+
+        scanner.close();
+    }
+}
