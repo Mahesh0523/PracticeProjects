@@ -1,0 +1,102 @@
+Step 1: Creating a Maven standalone project
+●	Open Eclipse 
+●	Go to the File menu. Choose New->Maven Project
+●	Check Create a Simple Project checkbox and click on Next
+●	In Group Id and Artifact id enter UsingJUnit and click on Finish
+●	This will create the project files in the Project Explorer
+
+
+Step 2: Configuring pom.xml to add JUnit5 dependencies
+●	Expand UsingJUnit in the Project Explorer
+●	Double click on pom.xml and enter the following data:
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>UsingJUnit</groupId>
+  <artifactId>UsingJUnit</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.4.2</version>
+        </dependency>
+        
+         <dependency>
+        <groupId>org.junit.platform</groupId>
+        <artifactId>junit-platform-launcher</artifactId>
+        <version>1.2.0</version>
+    </dependency>
+    
+  </dependencies>
+</project>
+
+
+
+Step 3: Creating a JUnit class DependencyInjection
+●	In the Project Explorer, expand the project UsingJUnit
+●	Expand src->main->java. Right click on java. Choose New->Other
+●	From the list of Wizards, select Class and click on Next
+●	Enter the Package as com.ecommerce.tests and Name as DependencyInjection and click on Finish
+●	Enter the following code:
+package com.ecommerce.tests;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIf;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
+ 
+@DisplayName("JUnit 5 Dependency Injection Example")
+@RunWith(JUnitPlatform.class)
+public class DependencyInjection {
+
+        DependencyInjection(TestInfo testInfo) {
+        assertEquals("JUnit 5 Dependency Injection Example", testInfo.getDisplayName());
+    }
+
+    @BeforeEach
+    void init(TestInfo testInfo) {
+        String displayName = testInfo.getDisplayName();
+        assertTrue(displayName.equals("TEST 1") || displayName.equals("test2()"));
+    }
+
+    @Test
+    @DisplayName("TEST 1")
+    @Tag("my-tag")
+    void test1(TestInfo testInfo) {
+        assertEquals("TEST 1", testInfo.getDisplayName());
+        assertTrue(testInfo.getTags().contains("my-tag"));
+    }
+
+    @Test
+    void test2() {
+    }
+
+}
+
+
+Step 4: Running the JUnit class
+●	Right click on DependencyInjection.java in the Project Explorer
+●	Select Run As->JUnit Test
+●	You can see the JUnit output in the Eclipse JUnit tab
+
+
+Step 5: Pushing the code to your GitHub repositories
+●	Open your command prompt and navigate to the folder where you have created your files.
+cd <folder path>
+●	Initialize your repository using the following command:
+git init
+●	Add all the files to your git repository using the following command:
+git add .
+●	Commit the changes using the following command:
+git commit .  -m “Changes have been committed.”
+●	Push the files to the folder you initially created using the following command:
+git push -u origin master
